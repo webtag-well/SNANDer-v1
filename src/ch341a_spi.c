@@ -92,7 +92,7 @@ static struct libusb_transfer *transfer_ins[USB_IN_TRANSFERS] = {0};
 struct libusb_device_handle *handle = NULL;
 
 const struct dev_entry devs_ch341a_spi[] = {
-	{0x1A86, 0x5512, "WinChipHead (WCH)", "CH341A"},
+	{0x4348, 0x5512, "WinChipHead (WCH)", "CH341A"},
 	{0},
 };
 
