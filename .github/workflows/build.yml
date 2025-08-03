@@ -69,3 +69,26 @@ jobs:
         with:
           name: SNANDer-macOS
           path: build/SNANDer*
+
+  release:
+    name: Create GitHub Release
+    needs: [build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release-artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.0
+          name: SNANDer v1.0.0
+          body: |
+            自动构建版本，支持：
+            - ✅ Linux
+            - ✅ Windows
+            - ✅ macOS
+          files: |
+            release-artifacts/**/*
